@@ -1,4 +1,4 @@
-package org.miniredis.ValueTypes;
+package org.miniredis.valuetypes;
 
 public class StringValue extends BaseValue {
 	public StringValue()

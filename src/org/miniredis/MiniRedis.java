@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.miniredis.ValueTypes.BaseValue;
-import org.miniredis.ValueTypes.SetValue;
-import org.miniredis.ValueTypes.StringValue;
 import org.miniredis.exceptions.NotIntegerOrOutOfRangeException;
 import org.miniredis.exceptions.NotValidFloatException;
 import org.miniredis.exceptions.WrongTypeException;
+import org.miniredis.valuetypes.BaseValue;
+import org.miniredis.valuetypes.SetValue;
+import org.miniredis.valuetypes.StringValue;
 
 public class MiniRedis {
 

@@ -1,4 +1,4 @@
-package org.miniredis.ValueTypes;
+package org.miniredis.valuetypes;
 
 import java.util.ArrayList;
 import java.util.List;
