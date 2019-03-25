@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 import org.miniredis.MiniRedis;
 import org.miniredis.exceptions.NotIntegerOrOutOfRangeException;
@@ -37,7 +38,7 @@ public class Console {
 	}
 
 	public static void getCommand(String[] commands, MiniRedis redis) {
-		if (commands.length > 2) {
+		if (commands.length != 2) {
 			System.out.println(String.format(COMMAND_WRONG_ARGUMENTS, "get"));
 			return;
 		}
@@ -56,7 +57,7 @@ public class Console {
 	}
 
 	private static void dbsizeCommand(String[] commands, MiniRedis redis) {
-		if (commands.length > 1) {
+		if (commands.length != 1) {
 			System.out.println(String.format(COMMAND_WRONG_ARGUMENTS, "dbsize"));
 			return;
 		}
@@ -66,7 +67,7 @@ public class Console {
 	}
 
 	private static void incrCommand(String[] commands, MiniRedis redis) {
-		if (commands.length > 2) {
+		if (commands.length != 2) {
 			System.out.println(String.format(COMMAND_WRONG_ARGUMENTS, "incr"));
 			return;
 		}
@@ -81,7 +82,7 @@ public class Console {
 	}
 
 	private static void zaddCommand(String[] commands, MiniRedis redis) {
-		if (commands.length > 4) {
+		if (commands.length != 4) {
 			System.out.println(String.format(COMMAND_WRONG_ARGUMENTS, "zadd"));
 			return;
 		}
@@ -95,7 +96,7 @@ public class Console {
 	}
 
 	private static void zcardCommand(String[] commands, MiniRedis redis) {
-		if (commands.length > 2) {
+		if (commands.length != 2) {
 			System.out.println(String.format(COMMAND_WRONG_ARGUMENTS, "zcard"));
 			return;
 		}
@@ -109,7 +110,7 @@ public class Console {
 	}
 
 	private static void zrankCommand(String[] commands, MiniRedis redis) {
-		if (commands.length > 3) {
+		if (commands.length != 3) {
 			System.out.println(String.format(COMMAND_WRONG_ARGUMENTS, "zrank"));
 			return;
 		}
@@ -135,12 +136,12 @@ public class Console {
 		}
 		
 		try {
-			List<String> range = redis.zrangeCommand(commands[1], commands[2], commands[3]);
+			List<Entry<String,Float>> range = redis.zrangeCommand(commands[1], commands[2], commands[3]);
 			if (range == null || range.size() == 0)
 				System.out.println(String.format(COMMAND_EMPTY_LIST));
 			else {
 				for (int i = 0; i < range.size(); i++) {
-					System.out.println(String.format("%d) %s", i, range.get(i)));
+					System.out.println(String.format("%d) %s", i, range.get(i).getKey()));
 				}
 			}
 		} catch (WrongTypeException | NotIntegerOrOutOfRangeException e) {

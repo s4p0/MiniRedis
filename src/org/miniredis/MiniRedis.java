@@ -2,6 +2,7 @@ package org.miniredis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.miniredis.exceptions.NotIntegerOrOutOfRangeException;
@@ -151,7 +152,7 @@ public class MiniRedis {
 		return null;
 	}
 
-	public List<String> zrangeCommand(String key, String _start, String _stop)
+	public List<Entry<String,Float>> zrangeCommand(String key, String _start, String _stop)
 			throws WrongTypeException, NotIntegerOrOutOfRangeException {
 		int start, stop;
 		try {
@@ -172,7 +173,7 @@ public class MiniRedis {
 			return result.list(start, stop);
 		}
 
-		return new ArrayList<String>();
+		return new ArrayList<Entry<String,Float>>();
 	}
 
 }
